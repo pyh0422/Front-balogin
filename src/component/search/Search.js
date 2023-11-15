@@ -10,11 +10,11 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
   useEffect(()=>{
     setSearchResults(data) 
   },[data]) 
-
+  //검색 결과저장
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
       const filteredResults = data.filter((item) =>
-      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) //대소문자 구별
       );
       setSearchResults(filteredResults);
     } else {
@@ -53,7 +53,12 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
               </tr>
             </thead>
             <tbody>
-              {searchResults
+              {searchResults 
+              // currentPage: 현재 페이지를 나타내는 변수
+              // itemsPerPage: 각 페이지당 표시될 항목의 수를 나타내는 변수       
+              // (currentPage - 1): 현재 페이지에서 1을 뺀 값입니다. 배열 인덱스는 0부터 시작      
+              // ((currentPage - 1) * itemsPerPage): 이전 단계에서 구한 값에 한 페이지당 표시될 항목 수를 곱합니다.         
+              // currentPage * itemsPerPage: 현재 페이지에서 한 페이지당 표시될 항목 수를 곱한 값
                 .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                 .map((data, i) => (
                   <tr key={i}>
@@ -66,9 +71,6 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
                        {data.title}
                       </Link>
                     </th>
-                   {/* <td>{data.member ? data.member.username : data.username}</td>  */}
-                    {/* {data.member  ? <td>{data.member.username}</td> : <td></td>}    */}
-                    {/* <td>{data.member ? data.member.username : ""}</td> */}
                     <td>{data.member.username}</td>
                     <td>{data.createDate}</td>
                     <td>{data.cnt}</td>

@@ -16,12 +16,12 @@ function CsMain({cs,setCs}) {
       .then((response) => {
         setNoticeList(response.data);
         const truncatedList = response.data.slice(0, 5).map((notice) => {
-          if (notice.title.length > 27) {
+          if (notice.title.length > 27) { //27글자 만 나오게끔
             notice.title = notice.title.slice(0, 27) + " ..."; // 제목 길이 제한
           }
           return notice;
         });
-        setMiniList(truncatedList.slice(0, 5)); // 처음 5개 항목만 miniList에 설정
+        setMiniList(truncatedList.slice(0, 5)); // 처음 5개 항목만 뜨게끔 miniList에 설정
         setIsNoticeLoading(false);
       })
       .catch((error) => {

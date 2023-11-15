@@ -1,8 +1,6 @@
-import { Button } from "react-bootstrap";
 import "../CSS/WriteNotice.css";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
-import { useState } from "react";
 
 function WriteOnetoOne({userInfo ,cs ,setCs}){
 
