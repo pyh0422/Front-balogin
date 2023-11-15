@@ -23,6 +23,16 @@ function AccountSales( {trans, setTrans} ) {
       [e.target.name] : e.target.value
     })
   }
+  
+  const priceHandler = (e) => {
+    const inputValue = e.target.value;
+    const numericValue = inputValue.replace(/[^0-9]/g, ''); // 숫자가 아닌 문자를 제거
+
+    setTrans({
+      ...trans,
+      [e.target.name]: numericValue
+    });
+  };
 
   console.log(trans);
 
@@ -38,7 +48,7 @@ function AccountSales( {trans, setTrans} ) {
         <tr>
           <th>판매 가격</th>
           <td className="priceInput">
-            <input type="text" name="price" className="t-1" placeholder="판매 가격 입력" onChange={changeHandler}/>원
+            <input type="text" name="price" className="t-1" placeholder="판매 가격 입력" onChange={priceHandler}/>원
           </td>
         </tr>
         <tr>
